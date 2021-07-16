@@ -1,40 +1,29 @@
 import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { ChakraProvider } from '@chakra-ui/react';
+import { myTheme } from './style/theme';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import TopSection from './components/TopSection';
+import Articles from './components/Articles';
+import MidSection from './components/MidSection';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [isOpen, setOpen] = useState(false);
+
+  //Window size listener
+  useEffect(() => {
+    window.addEventListener('resize', () => setWidth(window.innerWidth));
+  });
+
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+    <ChakraProvider resetCSS theme={myTheme}>
+      <Header width={width} isOpen={isOpen} setOpen={setOpen} />
+      <TopSection />
+      <MidSection />
+      <Articles />
+      <Footer />
     </ChakraProvider>
   );
 }
