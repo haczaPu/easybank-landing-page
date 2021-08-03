@@ -11,22 +11,52 @@ const TopSection = () => {
       alignItems="center"
     >
       <Flex
-        p="0 50px"
-        w={['full', 'full', 'full', '1200px']}
+        p={['0 50px', '0 50px', '0 0 0 50px', '0 0 0 50px']}
+        maxWidth={['full', 'full', 'full', '1200px']}
         pos="relative"
         zIndex="0"
         direction={['column-reverse', 'column-reverse', 'row', 'row']}
+        alignItems="center"
+        _before={{
+          position: 'absolute',
+          content: "''",
+          right: { sm: '0', md: '-42%', lg: '-42%', xl: '-42%' },
+          top: {
+            sm: '-24%',
+            md: '-15%',
+            lg: '-15%',
+            xl: '-15%',
+          },
+          w: '100%',
+          h: '100%',
+          bgImage: {
+            sm: "url('./assets/images/bg-intro-mobile.svg')",
+            md: "url('./assets/images/bg-intro-desktop.svg')",
+            lg: "url('./assets/images/bg-intro-desktop.svg')",
+            xl: "url('./assets/images/bg-intro-desktop.svg')",
+          },
+          bgSize: '111%',
+          bgRepeat: 'no-repeat',
+          zIndex: '-1',
+        }}
       >
         <Flex direction="column" justifyContent="center" w="380px">
           <Heading fontSize="50px">Next generation digital banking</Heading>
-          <Text mt="35px" fontSize="19px" color="neu.blue" fontWeight="400">
+          <Text
+            mt="35px"
+            fontSize="19px"
+            color="neu.blue"
+            fontWeight="400"
+            textAlign={['center', 'center', 'left', 'left']}
+          >
             Take your financial life online. Your Easybank account will be a
             one-stop-shop for spending, saving, budgeting, investing, and much
             more
           </Text>
           <Button
             mt="35px"
-            alignSelf="start"
+            mb={['50px', '50px', '0', '0']}
+            alignSelf={['center', 'center', 'start', 'start']}
             variant="cta"
             _hover={{
               bgGradient: 'linear(to-r, hsl(136, 65%, 75%),hsl(192, 70%, 75%))',
@@ -42,27 +72,16 @@ const TopSection = () => {
             src="./assets/images/bg-intro-desktop.svg"
           ></Image> */}
         </Flex>
-        <Box>
+        <Box position="relative" left={['0%', '0%', '10%', '20%']}>
           <Image
-            h="auto"
+            width={['100%', '100%', '120%', '120%']}
+            maxW="767px"
+            mt={['-36%', '-36%', '0', '0']}
             zIndex="auto"
-            // pos={['static', 'relative', 'absolute', 'absolute']}
-            pos="relative"
-            top="0px"
-            // left={['0px', '0px', '55%', '55%']}
             src="./assets/images/image-mockups.png"
             alt="mockups"
           ></Image>
         </Box>
-
-        {/* <Box
-          h="656px"
-          w="full"
-          bg="yellow"
-          bgImage="url(./assets/images/bg-intro-desktop.svg)"
-          bgPosition={['100% 68%', '100% 68%', '100% 0%', '-20% 68%']}
-          bgRepeat="no-repeat"
-        ></Box> */}
       </Flex>
     </Flex>
   );

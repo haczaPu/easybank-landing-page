@@ -21,7 +21,16 @@ const HamburgerMenu = ({ isOpen, setOpen, navButtons }) => {
           marginInlineStart="0 !important"
         >
           {navButtons.map((name, index) => (
-            <Button color="pri.blue" bg="none" key={index} h="30px" mt="20px">
+            <Button
+              color="pri.blue"
+              bg="none"
+              key={index}
+              h="30px"
+              mt="20px"
+              _hover={{
+                fontWeight: 900,
+              }}
+            >
               {name}
             </Button>
           ))}
